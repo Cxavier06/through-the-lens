@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Through The Lens - Portafolio fotográfico de Diseño Gráfico">
+  <title>Through The Lens | Portafolio Fotográfico</title>
+
+  <!-- Tipografías -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&family=Montserrat:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f3eadc;
+      --surface: #eadbc8;
+      --surface-2: #dfcbb5;
+      --text: #35161d;
+      --muted: #725f5d;
+      --lime: #7a1f35;
+      --orange: #a65a46;
+      --line: rgba(78, 28, 39, .16);
+      --max: 1280px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Montserrat", sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .17;
+      z-index: 999;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    .container {
+      width: min(calc(100% - 80px), var(--max));
+      margin: auto
+    }
+
+    /* HEADER */
+    header {
+      height: 82px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(243, 234, 220, .90);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .brand {
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: 27px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .brand span {
+      color: var(--lime)
+    }
+
+    .brand::after {
+      content: "";
+      display: inline-block;
+      width: 28px;
+      height: 2px;
+      background: var(--lime);
+      margin-left: 12px;
+      vertical-align: middle;
+    }
+
+    nav {
+      display: flex;
+      gap: 32px
+    }
+
+    nav a {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: #7d6866;
+      font-weight: 800;
+      transition: .25s;
+    }
+
+    nav a:hover {
+      color: var(--text)
+    }
+
+    /* HERO */
+    .hero {
+      min-height: calc(100vh - 82px);
+      position: relative;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      overflow: hidden;
+      background: linear-gradient(115deg, #f6efe5 0%, #f0e3d2 68%, #e8d4c4 100%);
+    }
+
+    .hero::after {
+      content: "";
+      width: 650px;
+      height: 650px;
+      position: absolute;
+      right: -160px;
+      top: 30px;
+      border: 1px solid rgba(122, 31, 53, .14);
+      border-radius: 50%;
+      box-shadow: 0 0 0 100px rgba(255, 255, 255, .015), 0 0 0 220px rgba(255, 255, 255, .01);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 75px 0
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #765f5d;
+      margin-bottom: 35px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      background: var(--orange);
+      border-radius: 50%
+    }
+
+    h1,
+    h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-weight: 600;
+      line-height: .86;
+    }
+
+    h1 {
+      font-size: clamp(75px, 10.7vw, 158px);
+      max-width: 1050px;
+      letter-spacing: -.055em;
+    }
+
+    h1 span {
+      color: var(--lime)
+    }
+
+    .hero-sub {
+      max-width: 670px;
+      font-size: 15px;
+      line-height: 1.9;
+      color: #705c5a;
+      margin: 38px 0;
+    }
+
+    .members {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 1000px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .member {
+      padding: 18px 25px 18px 0
+    }
+
+    .member+.member {
+      border-left: 1px solid var(--line);
+      padding-left: 25px
+    }
+
+    .member strong {
+      display: block;
+      font-size: 12px;
+      margin-bottom: 6px
+    }
+
+    .member span {
+      font-size: 9px;
+      color: var(--lime);
+      letter-spacing: .18em;
+      font-weight: 800
+    }
+
+    /* GENERAL SECTION */
+    .collection {
+      padding: 105px 0;
+      border-bottom: 1px solid var(--line);
+      position: relative
+    }
+
+    .collection::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 7px;
+      height: 92px;
+      background: var(--lime);
+    }
+
+    .section-top {
+      display: grid;
+      grid-template-columns: 1fr 200px;
+      align-items: end;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+
+    .kicker {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      color: var(--lime);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: clamp(58px, 7vw, 105px);
+      letter-spacing: -.045em;
+    }
+
+    .section-copy {
+      max-width: 800px;
+      margin-top: 24px;
+      font-size: 13px;
+      line-height: 1.9;
+      color: var(--muted);
+    }
+
+    .section-number {
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: 110px;
+      line-height: .7;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(122, 31, 53, .28);
+      text-align: right;
+    }
+
+    /* 4 IMAGES */
+    .gallery {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      grid-template-rows: 380px 380px;
+      gap: 18px;
+    }
+
+    .photo {
+      position: relative;
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid rgba(122, 31, 53, .18);
+      box-shadow: 0 12px 32px rgba(73, 30, 36, .07);
+      isolation: isolate;
+    }
+
+    .photo:nth-child(1) {
+      grid-row: span 2
+    }
+
+    .photo:nth-child(4) {
+      position: absolute;
+    }
+
+    /* Reorganizamos las 4 fotos de forma editorial */
+    .gallery {
+      grid-template-columns: 1.2fr .8fr .8fr;
+      grid-template-rows: 310px 310px;
+    }
+
+    .photo:nth-child(1) {
+      grid-column: 1;
+      grid-row: 1 / 3
+    }
+
+    .photo:nth-child(2) {
+      grid-column: 2 / 4;
+      grid-row: 1
+    }
+
+    .photo:nth-child(3) {
+      grid-column: 2;
+      grid-row: 2
+    }
+
+    .photo:nth-child(4) {
+      grid-column: 3;
+      grid-row: 2;
+      position: relative
+    }
+
+    .photo img {
+      transition: transform .7s ease, filter .7s ease
+    }
+
+    .photo:hover img {
+      transform: scale(1.045);
+      filter: contrast(1.05)
+    }
+
+    .photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 45%, rgba(54, 15, 27, .82));
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .caption {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 18px;
+      z-index: 2;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .caption b {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em
+    }
+
+    .caption small {
+      font-size: 9px;
+      color: #f5eadf
+    }
+
+    /* Placeholders si todavía no han colocado fotos */
+    .placeholder {
+      height: 100%;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(122, 31, 53, .12), transparent 30%),
+        radial-gradient(circle at 75% 70%, rgba(166, 90, 70, .12), transparent 25%),
+        #e5d3bf;
+    }
+
+    .placeholder span {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .13em;
+      color: #8b6e69;
+      text-transform: uppercase;
+    }
+
+    /* Cada colección cambia ligeramente */
+    #alimentos .section-number {
+      color: rgba(122, 31, 53, .07)
+    }
+
+    #productos {
+      background: #eee2d2
+    }
+
+    #modelo .kicker {
+      color: var(--orange)
+    }
+
+    #modelo .section-number {
+      color: rgba(166, 90, 70, .08)
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 70px 0 30px
+    }
+
+    .footer-main {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 60px;
+    }
+
+    .footer-title {
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: 50px;
+    }
+
+    .footer-title span {
+      color: var(--lime)
+    }
+
+    .footer-right {
+      text-align: right;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 2
+    }
+
+    .copyright {
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      font-size: 9px;
+      color: #8a706c;
+    }
+
+    @media(max-width:900px) {
+      .container {
+        width: min(calc(100% - 36px), var(--max))
+      }
+
+      nav {
+        display: none
+      }
+
+      .members {
+        grid-template-columns: 1fr
+      }
+
+      .member+.member {
+        border-left: 0;
+        border-top: 1px solid var(--line);
+        padding-left: 0
+      }
+
+      .section-top {
+        grid-template-columns: 1fr
+      }
+
+      .section-number {
+        text-align: left;
+        font-size: 80px
+      }
+
+      .gallery {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 420px 260px 260px;
+      }
+
+      .photo:nth-child(1) {
+        grid-column: 1 / 3;
+        grid-row: 1
+      }
+
+      .photo:nth-child(2) {
+        grid-column: 1 / 3;
+        grid-row: 2
+      }
+
+      .photo:nth-child(3) {
+        grid-column: 1;
+        grid-row: 3
+      }
+
+      .photo:nth-child(4) {
+        grid-column: 2;
+        grid-row: 3
+      }
+    }
+
+    @media(max-width:600px) {
+      h1 {
+        font-size: 65px
+      }
+
+      .collection {
+        padding: 75px 0
+      }
+
+      .gallery {
+        display: flex;
+        flex-direction: column
+      }
+
+      .photo {
+        height: 340px
+      }
+
+      .footer-main {
+        grid-template-columns: 1fr
+      }
+
+      .footer-right {
+        text-align: left
+      }
+
+      .copyright {
+        flex-direction: column;
+        gap: 8px
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#inicio">Through <span>The Lens</span></a>
+      <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#alimentos">Alimentos & Bebidas</a>
+        <a href="#productos">Productos</a>
+        <a href="#modelo">Producto con Modelo</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-content">
+        <div class="eyebrow">Portafolio fotográfico · Diseño Gráfico</div>
+        <h1>Through <span>The Lens</span></h1>
+        <p class="hero-sub">
+          Through The Lens es un espacio dedicado a la fotografía como herramienta de comunicación visual. A través de
+          las categorías de alimentos y bebidas, fotografía de producto y producto con modelo, este blog presenta una
+          colección de imágenes que destacan la creatividad, la técnica y el poder de contar historias mediante la luz,
+          la composición y el encuadre.
+        </p>
+
+        <div class="members">
+          <div class="member">
+            <strong>Ariana Noelia Cruz Pinto</strong>
+            <span>CP260930</span>
+          </div>
+          <div class="member">
+            <strong>Paola Eunice Juárez Ruiz</strong>
+            <span>JR262174</span>
+          </div>
+          <div class="member">
+            <strong>Gabriela María Quintanilla Castro</strong>
+            <span>QC260838</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 01 -->
+    <section class="collection" id="alimentos">
+      <div class="container">
+        <div class="section-top">
+          <div>
+            <div class="kicker">Colección 01 · Sabor, textura & color</div>
+            <h2>Alimentos &<br>Bebidas</h2>
+            <p class="section-copy">
+              Esta categoría reúne una variedad de propuestas gastronómicas que destacan por su presentación, sabor y
+              personalidad. A través de diferentes preparaciones, se busca mostrar la diversidad y el atractivo visual
+              que caracterizan al mundo de los alimentos y las bebidas.
+            </p>
+          </div>
+          <div class="section-number">01</div>
+        </div>
+
+        <div class="gallery">
+
+          <figure class="photo">
+            <img src="img/C1.jpeg" alt="Alimentos y bebidas 1">
+            <figcaption class="caption">
+              <b>Food Story</b>
+              <small>01 / 04</small>
+            </figcaption>
+          </figure>
+
+          <figure class="photo">
+            <img src="img/C2.jpeg" alt="Alimentos y bebidas 2">
+            <figcaption class="caption">
+              <b>Fresh Details</b>
+              <small>02 / 04</small>
+            </figcaption>
+          </figure>
+
+          <figure class="photo">
+            <img src="img/C3.jpeg" alt="Alimentos y bebidas 3">
+            <figcaption class="caption">
+              <b>Texture</b>
+              <small>03 / 04</small>
+            </figcaption>
+          </figure>
+
+          <figure class="photo">
+            <img src="img/C4.jpg" alt="Alimentos y bebidas 4">
+            <figcaption class="caption">
+              <b>Color & Taste</b>
+              <small>04 / 04</small>
+            </figcaption>
+          </figure>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 -->
+    <section class="collection" id="productos">
+      <div class="container">
+        <div class="section-top">
+          <div>
+            <div class="kicker">Colección 02 · Comercial & Conceptual</div>
+            <h2>Fotografía de<br>Producto</h2>
+            <p class="section-copy">
+              Esta colección presenta una línea de cuidado corporal enriquecida con vitamina C, diseñada para aportar
+              luminosidad e hidratación a la piel. Las imágenes muestran la variedad de productos que conforman la
+              línea, destacando su presentación, consistencia y propuesta de bienestar dentro de una misma identidad de
+              marca.
+            </p>
+          </div>
+          <div class="section-number">02</div>
+        </div>
+
+        <div class="gallery">
+
+          <figure class="photo">
+            <img src="img/P1.jpeg" alt="Fotografía de producto 1">
+            <figcaption class="caption">
+              <b>Hero Product</b>
+              <small>01 / 04</small>
+            </figcaption>
+          </figure>
+
+          <figure class="photo">
+            <img src="img/P2.jpeg" alt="Fotografía de producto 2">
+            <figcaption class="caption">
+              <b>Material</b>
+              <small>02 / 04</small>
+            </figcaption>
+          </figure>
+
+          <figure class="photo">
+            <img src="img/P3.jpg" alt="Fotografía de producto 3">
+            <figcaption class="caption">
+              <b>Detail</b>
+              <small>03 / 04</small>
+            </figcaption>
+          </figure>
+
+          <figure class="photo">
+            <img src="img/P4.jpg" alt="Fotografía de producto 4">
+            <figcaption class="caption">
+              <b>Identity</b>
+              <small>04 / 04</small>
+            </figcaption>
+          </figure>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 -->
+    <section class="collection" id="modelo">
+      <div class="container">
+        <div class="section-top">
+          <div>
+            <div class="kicker">Colección 03 · Persona, marca & actitud</div>
+            <h2>Producto con<br>Modelo</h2>
+            <p class="section-copy">
+              Esta categoría presenta un producto en interacción con un modelo, mostrando su uso dentro de un contexto
+              real. La presencia humana aporta cercanía y permite comunicar de manera más efectiva la experiencia, el
+              propósito y la identidad del producto.
+            </p>
+          </div>
+          <div class="section-number">03</div>
+        </div>
+
+        <div class="gallery">
+
+          <figure class="photo">
+            <img src="img/M1.jpg" alt="Producto con modelo 1">
+            <figcaption class="caption">
+              <b>Campaign</b>
+              <small>01 / 04</small>
+            </figcaption>
+          </figure>
+
+          <figure class="photo">
+            <img src="img/M2.jpg" alt="Producto con modelo 2">
+            <figcaption class="caption">
+              <b>Editorial</b>
+              <small>02 / 04</small>
+            </figcaption>
+          </figure>
+
+          <figure class="photo">
+            <img src="img/M3.JPG" alt="Producto con modelo 3">
+            <figcaption class="caption">
+              <b>Attitude</b>
+              <small>03 / 04</small>
+            </figcaption>
+          </figure>
+
+          <figure class="photo">
+            <img src="img/M4.JPG" alt="Producto con modelo 4">
+            <figcaption class="caption">
+              <b>Brand Story</b>
+              <small>04 / 04</small>
+            </figcaption>
+          </figure>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-title">Through <span>The Lens</span></div>
+        <div class="footer-right">
+          ALIMENTOS & BEBIDAS · PRODUCTOS · PRODUCTO CON MODELO<br>
+          PORTAFOLIO FOTOGRAFICO
+        </div>
+      </div>
+      <div class="copyright">
+        <span>© 2026 THROUGH THE LENS</span>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
